@@ -1,0 +1,34 @@
+<div class="container" style="height:100vh" fxLayout="column" fxLayoutAlign="center center"  novalidate> 
+    <div style="border:1px solid black;padding:20px;width:500px;">
+        <h1>Login</h1>
+    <form [formGroup]="formGroup" fxLayout="column" (ngSubmit)="onSubmit(formGroup.value)" class="form">
+     
+      <mat-form-field class="form-element">
+        <input matInput placeholder="Enter Email address" formControlName="email">
+        <mat-error *ngIf="!formGroup.controls['email'].valid && formGroup.controls['email'].touched">
+          {{ getErrorEmail() }}
+        </mat-error>
+      </mat-form-field>
+  
+     
+  
+      <mat-form-field class="form-element">
+        <input matInput placeholder="Password" formControlName="password">
+        <mat-hint>Choose a password of at least eight characters, one uppercase letter and one number</mat-hint>
+        <mat-error *ngIf="!formGroup.controls['password'].valid && formGroup.controls['password'].touched">
+          {{ getErrorPassword() }}
+        </mat-error>
+      </mat-form-field>
+  
+     
+      <div class="form-element">
+        <mat-error *ngIf="submit_err.status">
+            {{ submit_err.message }}
+          </mat-error>
+        <button mat-raised-button color="primary" type="submit" class="button" [disabled]="!formGroup.valid">Submit Form</button>
+      </div>
+  
+    </form>
+</div>
+  </div>
+  
